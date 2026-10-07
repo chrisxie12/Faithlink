@@ -83,3 +83,26 @@ src/
     global.css            # Reset, design tokens, base typography
     auth.module.css       # Shared login/signup form styles
 ```
+
+## Deployment (Vercel)
+
+The repo is preconfigured for Vercel — `vercel.json` sets the build/output
+directories and adds an SPA rewrite so deep links like `/dashboard` load the app
+instead of returning a 404.
+
+1. Push to `main` (already done for the initial version).
+2. In the [Vercel dashboard](https://vercel.com/new) → **Import Git Repository** →
+   select `chrisxie12/Faithlink`.
+3. Leave the framework preset on **Vite** (build `npm run build`, output `dist`).
+4. Under **Environment Variables**, add all six `VITE_FIREBASE_*` keys from
+   `.env.example` with your real Firebase values (Environment: *Production*,
+   *Preview* and *Development*).
+5. Deploy. Every future push to `main` redeploys automatically.
+
+Notes:
+
+- `VITE_FIREBASE_*` values are inlined at **build time** — changing one in
+  Vercel requires a redeploy.
+- Auth must be enabled for your site's domain in
+  **Firebase console → Authentication → Settings → Authorized domains**
+  (your `*.vercel.app` URL is added automatically for most projects).
