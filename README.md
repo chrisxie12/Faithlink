@@ -76,7 +76,7 @@ src/
   context/
     AuthContext.tsx       # Firebase auth state + login/signup/logout
   lib/
-    firebase.ts           # Firebase app + service exports (env-driven config)
+    firebase.ts           # Firebase app + auth export (env-driven config)
   pages/
     Landing/  Login/  Signup/  Dashboard/
   styles/
