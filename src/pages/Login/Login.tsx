@@ -29,7 +29,10 @@ export default function Login() {
   return (
     <div className={styles.page}>
       <div className={styles.card}>
-        <span className={styles.logo}>Faithlink</span>
+        <Link className={styles.logo} to="/">
+          <span className={styles.logoMark}>F</span>
+          Faithlink
+        </Link>
         <h1 className={styles.title}>Welcome back</h1>
         <p className={styles.subtitle}>Log in to your account</p>
 

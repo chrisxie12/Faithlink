@@ -1,38 +1,75 @@
 .page {
   min-height: 100dvh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(60rem 40rem at 12% -10%, rgba(47, 111, 237, 0.16), transparent 60%),
+    radial-gradient(50rem 35rem at 100% 110%, rgba(79, 131, 255, 0.14), transparent 60%),
+    var(--color-bg);
+}
+
+.page::before {
+  content: '';
+  position: absolute;
+  width: 16rem;
+  height: 16rem;
+  border-radius: 50%;
+  top: -5rem;
+  right: -4rem;
+  background: linear-gradient(135deg, rgba(47, 111, 237, 0.18), rgba(47, 111, 237, 0));
+  filter: blur(6px);
+  pointer-events: none;
 }
 
 .card {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  max-width: 24rem;
+  max-width: 24.5rem;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 1.5rem;
+  border-radius: 18px;
+  box-shadow: 0 24px 60px -32px rgba(16, 24, 40, 0.45);
+  padding: 1.75rem 1.5rem;
 }
 
 .logo {
-  display: block;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--color-text);
   font-weight: 700;
-  font-size: 1.15rem;
-  margin-bottom: 0.25rem;
+  font-size: 1.05rem;
+  margin-bottom: 1.1rem;
+}
+
+.logoMark {
+  display: inline-grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--color-primary), #4f83ff);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
 }
 
 .title {
-  margin: 0 0 0.25rem;
-  font-size: 1.35rem;
+  margin: 0 0 0.3rem;
+  font-size: 1.4rem;
   text-align: center;
+  letter-spacing: -0.02em;
 }
 
 .subtitle {
-  margin: 0 0 1.25rem;
+  margin: 0 0 1.35rem;
   text-align: center;
   color: var(--color-muted);
   font-size: 0.95rem;
@@ -51,40 +88,58 @@
 }
 
 .label {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
+  color: var(--color-text);
 }
 
 .input {
   width: 100%;
-  padding: 0.65rem 0.75rem;
+  padding: 0.7rem 0.8rem;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  background: var(--color-surface);
+  border-radius: 10px;
+  background: #fbfcfe;
   color: var(--color-text);
   font-size: 1rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.input::placeholder {
+  color: #9aa4b2;
+}
+
+.input:hover {
+  border-color: #c9d1de;
 }
 
 .input:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 1px;
+  outline: none;
+  background: var(--color-surface);
   border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.18);
 }
 
 .button {
-  margin-top: 0.25rem;
-  padding: 0.7rem 1rem;
+  margin-top: 0.35rem;
+  padding: 0.75rem 1rem;
   border: none;
-  border-radius: var(--radius);
-  background: var(--color-primary);
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--color-primary), #4f83ff);
   color: #fff;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+  box-shadow: 0 12px 24px -14px rgba(47, 111, 237, 0.9);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
 }
 
 .button:hover:not(:disabled) {
-  background: var(--color-primary-hover);
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .button:disabled {
@@ -94,15 +149,16 @@
 
 .error {
   margin: 0;
-  padding: 0.6rem 0.75rem;
-  border-radius: var(--radius);
+  padding: 0.65rem 0.8rem;
+  border-radius: 10px;
   background: #fdecec;
+  border: 1px solid #f6d5d5;
   color: var(--color-danger);
   font-size: 0.9rem;
 }
 
 .footer {
-  margin-top: 1rem;
+  margin-top: 1.15rem;
   font-size: 0.9rem;
   color: var(--color-muted);
   text-align: center;
@@ -116,4 +172,10 @@
 
 .link:hover {
   text-decoration: underline;
+}
+
+@media (min-width: 640px) {
+  .card {
+    padding: 2.25rem 2rem;
+  }
 }
